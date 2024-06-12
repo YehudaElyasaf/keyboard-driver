@@ -4,6 +4,8 @@
 
 
 MODULE_LICENSE("MIT");
+MODULE_DESCRIPTION("TODO");
+MODULE_AUTHOR("Yehuda Elyasaf");
 
 
 static int __init init1(void){
