@@ -3,6 +3,9 @@
 #include <linux/init.h>
 #include <linux/usb.h>
 
+#define MODULE_NAME	"keyboard_driver"
+#define MODULE_PRINT_PREFIX	MODULE_NAME ": "
+
 #define VENDOR_ID	0x03f0
 #define PRODUCT_ID	0x0024
 
@@ -25,7 +28,7 @@ static int usb_probe(struct usb_interface* interface, const struct usb_device_id
 static void usb_disconnect(struct usb_interface* interface);
 
 static struct usb_driver usb_keyboard_driver = {
-	.name		= "keyboard_driver",
+	.name		= MODULE_NAME,
 	.probe		= usb_probe,
 	.disconnect	= usb_disconnect,
 	.id_table	= usb_id_table,

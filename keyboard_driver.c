@@ -2,38 +2,39 @@
 
 
 static int __init keyboard_driver_init(void){
-	printk(KERN_INFO "keyboard_driver: initializing...");
+	printk(KERN_INFO MODULE_PRINT_PREFIX "initializing...\n");
 
 	//register USB device
 	int result = usb_register(&usb_keyboard_driver);
 	if (result != 0){
 		//invalid result code
-		printk(KERN_ERR "keyboard_driver: Error in loading usb device. Error code: %d\n", result);
+		printk(KERN_ERR MODULE_PRINT_PREFIX "Error in loading usb device. Error code: %d\n", result);
 		return -1;
 	}
 	
-	printk(KERN_INFO "keyboard_driver: Driver initialized!\n");
+	printk(KERN_INFO MODULE_PRINT_PREFIX "Driver initialized successfully!\n");
 	return 0;
 }
 
 static void __exit keyboard_driver_exit(void)
 {
-	printk(KERN_INFO "keyboard_driver: exiting...");
+	printk(KERN_INFO MODULE_PRINT_PREFIX "exiting...\n");
 
-	//deregistre USB device
+	//deregister USB device
 	usb_deregister(&usb_keyboard_driver);
 
-	printk(KERN_INFO "keyboard_driver: Driver exited successfully!\n");
+	printk(KERN_INFO MODULE_PRINT_PREFIX "Driver exited successfully!\n");
 }
 
 
 static int usb_probe(struct usb_interface* interface, const struct usb_device_id* id){
-	printk(KERN_INFO "keyboard_driver: USB device probed");
+	printk(KERN_INFO MODULE_PRINT_PREFIX "USB device [ID %04x:%04x] connected\n",
+			id->idVendor, id->idProduct);
 	return 0;
 }
 
 static void usb_disconnect(struct usb_interface* interface){
-	printk(KERN_INFO "keyboard_driver: USB device disconnected");
+	printk(KERN_INFO MODULE_PRINT_PREFIX "USB device disconnected\n");
 }
 
 module_init(keyboard_driver_init);
