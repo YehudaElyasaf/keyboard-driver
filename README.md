@@ -3,7 +3,7 @@
 # Keyboard Driver
 USB keyboard driver for Linux.
 
-## Install driver
+## Install
 ```
 git clone https://github.com/YehudaElyasaf/keyboard-driver/
 cd keyboard-driver
@@ -11,7 +11,7 @@ make
 sudo insmod keyboard_driver.ko
 ```
 
-## Remove driver
+## Remove
 ```
 sudo rmmod keyboard_driver
 ```
