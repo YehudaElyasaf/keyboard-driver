@@ -37,3 +37,6 @@ static struct usb_driver usb_keyboard_driver = {
 	.disconnect	= usb_disconnect,
 	.id_table	= usb_id_table,
 };
+
+module_init(keyboard_driver_init);
+module_exit(keyboard_driver_exit);

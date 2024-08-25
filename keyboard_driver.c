@@ -53,6 +53,3 @@ static irqreturn_t key_irq_handler(int irq, void* dev_id){
 	printk(KERN_INFO MODULE_PRINT_PREFIX "IRQ!");
 	return IRQ_HANDLED;
 }
-
-module_init(keyboard_driver_init);
-module_exit(keyboard_driver_exit);
